@@ -1,0 +1,67 @@
+# ----------------------------
+# Node.js
+# ----------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+# Si vous souhaitez ignorer package-lock (à utiliser selon la gestion de dépendances)
+# package-lock.json
+
+# ----------------------------
+# Projets .NET / Visual Studio
+# ----------------------------
+# Fichiers temporaires et caches utilisateur
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Dossiers générés par Visual Studio et VS Code
+.vs/
+.vscode/
+
+# Répertoires de build
+bin/
+obj/
+
+# ----------------------------
+# Docker
+# ----------------------------
+# Vous pouvez ignorer des fichiers spécifiques d'override de docker-compose
+docker-compose.override.yml
+
+# ----------------------------
+# Frontend (Next.js / React)
+# ----------------------------
+# Dossier de build Next.js (si généré)
+.next/
+out/
+
+# ----------------------------
+# Python
+# ----------------------------
+venv/
+__pycache__/
+*.py[cod]
+
+# ----------------------------
+# Logs et fichiers temporaires
+# ----------------------------
+*.log
+logs/
+tmp/
+temp/
+
+# ----------------------------
+# Clés secrètes et variables d'environnement
+# ----------------------------
+.env
+.env.local
+key.json
+
+# ----------------------------
+# Système
+# ----------------------------
+.DS_Store
+Thumbs.db

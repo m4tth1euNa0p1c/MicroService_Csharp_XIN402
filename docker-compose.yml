@@ -1,0 +1,69 @@
+version: '3.8'
+services:
+  api-gateway:
+    build:
+      context: ./ApiGateway
+      dockerfile: Dockerfile
+    ports:
+      - "5000:80"
+    depends_on:
+      - microservice-product
+      - microservice-cart
+      - microservice-search-ws
+    env_file: .env
+    restart: always
+
+  microservice-product:
+    build:
+      context: ./microservice-product
+      dockerfile: Dockerfile
+    ports:
+      - "5001:80"
+    depends_on:
+      - mongo-product
+    env_file: .env
+    restart: always
+
+  microservice-cart:
+    build:
+      context: ./microservice-cart
+      dockerfile: Dockerfile
+    ports:
+      - "5002:80"
+    depends_on:
+      - mongo-cart
+    env_file: .env
+    restart: always
+
+  microservice-search-ws:
+    build:
+      context: ./microservice-search-ws
+      dockerfile: Dockerfile
+    ports:
+      - "3003:3003"
+    environment:
+      - MONGO_PRODUCT_HOST=mongo-product
+      - MONGO_PRODUCT_PORT=27017
+      - MONGO_PRODUCT_DB=productsdb
+    depends_on:
+      - mongo-product
+    restart: always
+
+  mongo-product:
+    build:
+      context: ./db/product
+      dockerfile: Dockerfile
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=productsdb
+
+  mongo-cart:
+    build:
+      context: ./db/cart
+      dockerfile: Dockerfile
+    ports:
+      - "27018:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=cartsdb
+    restart: always
